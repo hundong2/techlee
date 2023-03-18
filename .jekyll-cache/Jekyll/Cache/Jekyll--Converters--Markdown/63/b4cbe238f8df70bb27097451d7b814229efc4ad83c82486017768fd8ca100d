@@ -1,0 +1,21 @@
+I"C<h1 id="networkcommand">NetworkCommand</h1>
+
+<p><a href="#01-port-information">01. Port Information</a><br />
+<a href="#02">02. </a></p>
+
+<h2 id="01-port-information">01. Port Information</h2>
+
+<ul>
+  <li>checking current opened port</li>
+  <li><code class="language-plaintext highlighter-rouge">lsof -i :[Port number]</code>
+    <ul>
+      <li>
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsof <span class="nt">-i</span> :4000
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="02">02.</h2>
+:ET
