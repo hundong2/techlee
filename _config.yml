@@ -27,14 +27,25 @@ description: >- # this means to ignore newlines until "baseurl:"
 domain: "hundong2.github.io"
 baseurl: "techlee" # the subpath of your site, e.g. /blog
 url: "https://hundong2.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+#twitter_username: jekyllrb
+#github_username:  jekyll
 
 # Build settings
-theme: minima
+
+remote_theme: samarsault/plainwhite-jekyll
+theme: plainwhite
 plugins:
   - jekyll-feed
 
+plainwhite:
+  name: Adam Denisov
+  tagline: Developer. Designer
+  date_format: "%b %-d, %Y"
+
+  social_links:
+    twitter: samarsault
+    github: samarsault
+    linkedIn: in/samarsault # format: locale/username
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
