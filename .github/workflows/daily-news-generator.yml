@@ -1,0 +1,47 @@
+name: Daily News Generator
+
+on:
+  schedule:
+    # 매일 오전 9시 (한국 시간)에 실행
+    # UTC 기준으로는 00:00 (한국 시간 09:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 수동 실행도 가능하도록 설정
+
+jobs:
+  generate-news:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Generate daily news post
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        cd scripts
+        python generate_news_post.py
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add _posts/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Add daily news post - $(date +'%Y-%m-%d')" && git push)
+        
+    - name: Build and deploy Jekyll site
+      env:
+        JEKYLL_ENV: production
+      run: |
+        bundle install
+        bundle exec jekyll build 
