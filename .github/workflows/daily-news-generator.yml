@@ -37,11 +37,4 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add _posts/
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Add daily news post - $(date +'%Y-%m-%d')" && git push)
-        
-    - name: Build and deploy Jekyll site
-      env:
-        JEKYLL_ENV: production
-      run: |
-        bundle install
-        bundle exec jekyll build 
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Add daily news post - $(date +'%Y-%m-%d')" && git push) 
